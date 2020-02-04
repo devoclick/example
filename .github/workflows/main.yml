@@ -14,7 +14,7 @@ jobs:
         username: root
         password: allahou786
         port: 22
-        source: "tests/a.txt,tests/b.txt"
-        target: "test"
+        source: "."
+        target: "/var/www/html"
         
         
