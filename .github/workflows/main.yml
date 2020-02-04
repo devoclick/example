@@ -1,16 +1,20 @@
-name: Deploy via ftp
-on: push
+name: scp files
+on: [push]
 jobs:
-  deploy:
-    name: Deploy
+
+  build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: Upload ftp
-      uses: sebastianpopp/ftp-action@releases/v1
+    - name: copy file via ssh password
+      uses: appleboy/scp-action@master
       with:
         host: http://ns3138884.ip-5-39-76.eu/
-        user: root
+        username: root
         password: allahou786
-        localDir: "dist"
-        remoteDir: "www"
+        port: 22
+        source: "tests/a.txt,tests/b.txt"
+        target: "test"
+        
+        
