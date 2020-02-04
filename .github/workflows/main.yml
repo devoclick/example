@@ -4,28 +4,14 @@ on: [push]
 
 jobs:
   build:
-
+    name: FTP-Deploy-Action
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@master
-
-    - name: Copy file via scp
-      uses: appleboy/scp-action@master
-      env:
-        HOST: "http://ns3138884.ip-5-39-76.eu/"
-        USERNAME : "root"
-        PASSWORD : "allahou786"
-        PORT : "22"
-        with:
-          source: "."
-          target: "/opt/app"
-
-    - name: Executing remote  command
-      uses: appleboy/ssh-action@master
-      with:
-        HOST: "http://ns3138884.ip-5-39-76.eu/"
-        USERNAME : "root"
-        PASSWORD : "allahou786"
-        PORT : "22"
-        script: cat /opt/app/README.md
+      - uses: actions/checkout@master
+      - name: FTP-Deploy-Action
+        uses: SamKirkland/FTP-Deploy-Action@2.0.0
+         env:
+        FTP_SERVER: http://ns3138884.ip-5-39-76.eu/
+        FTP_USERNAME: root
+        FTP_PASSWORD: allahou786  
+        ARGS: --delete
