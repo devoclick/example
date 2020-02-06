@@ -1,5 +1,5 @@
 <?php
-//safi
+//safi 22
 phpinfo();
 
 ?>
